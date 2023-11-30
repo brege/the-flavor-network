@@ -22,7 +22,7 @@ The code to generate this dataset can be found in a companion repository [here](
 
 The third module is a custom recipe searcher. This uses a dataset constructed from over 200,000 recipes on [food.com](https://food.com) (fmr. genius kitchen), which can be found [on kaggle](https://www.kaggle.com/datasets/shuyangli94/food-com-recipes-and-user-interactions).
 
-That dataset was turned into a SQLite database (see: /), where a custom WSGI API was built over Flask.
+That dataset was turned into a SQLite database (see: [db/csv_to_sql.ipynb](db/csv_to_sql.ipynb)), where a custom WSGI API was built over Flask.
 Recipes are dynamiccally updated as new ingredients are added or removed from the "proto" recipe ingredient list.
 In short, all three modules (ingredient search, network visualization, recipe databse) are kept in sync with the user's input.
 
