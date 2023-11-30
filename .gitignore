@@ -1,0 +1,13 @@
+themes/*
+public/
+assets/
+resources/
+*.swp
+go.???
+
+.editorconfig
+.github/
+.hugo_build.lock
+
+node_modules/ 
+
