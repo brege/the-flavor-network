@@ -18,7 +18,7 @@ which is served through a [nginx](https://nginx) reverse proxy.
 The visualization makes use of two main libraries: 
 
 1. [vis.js](https://visjs.org) for visualization of the network graph
-2. [fuse.js](https://www.fusejs.io/) for searching
+2. [fuse.js](https://www.fusejs.io/) for searching through the ingredient space
 
 The network was constructed by creating a dataset out of [The Flavor Bible](https://karenandandrew.com/books/the-flavor-bible/), which is hosted statically on the website via JSON files.
 The code to generate this dataset can be found in a companion repository [here](https://github.com/brege/flavor-project). 
