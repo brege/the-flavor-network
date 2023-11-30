@@ -49,39 +49,41 @@ In order to use the recipe API, you'll need to initialize the SQL database.
 3. This will create a `food_dotcom.db` file.  On my production machine, I keep this database file in the same directory as `backend.py`: `/var/www/flask_recipe_api/food_dotcom.db`
 
 4. The API can be started with
-``` bash
-python backend.py
-```
-  which is what one does locally.  On the production machine https://flavorpair.me, however, the `systemd` service file used is provided in `system/flask-recipe-api.service` which adds an additional WSGI layer.
+    ``` bash
+    python backend.py
+    ```
+    which is what one does locally.  On the production machine https://flavorpair.me, however, the `systemd` service file used is provided in `system/flask-recipe-api.service` which adds an additional WSGI layer.
 
 ## Production Server
 
-1. Much of the deployment of the site is encapsulated in the `./deploy` shell script, in the `flavorpair.me` source directory. T
-his will build the site files locally via `hugo`, clean the site directory on the remote server, and then transfer the static site files to the remote server. 
+1. Much of the deployment of the site is encapsulated in the `./deploy` shell script, in the `flavorpair.me` source directory. 
+This will build the site files locally via `hugo`, clean the site directory on the remote server, and then transfer the static site files to the remote server. 
 
 2. The remote, as mentioned, also makes use of a `systemd` service file that controls the WSGI/Flask server API.  This is a separate process from hugo.  This only needs to be enabled once (located in `/etc/systemd/system/`):
-```bash
-sudo systemctl enable flask-recipe-api.service
-```
-  Reload the daemon
-```bash
-sudo systemctl daemon-reload
-```
-  and start the service
-```bash
-sudo systemctl start flask-recipe-api.service
-```
+    ```bash
+    sudo systemctl enable flask-recipe-api.service
+    ```
+    Reload the daemon
+    ```bash
+    sudo systemctl daemon-reload
+    ```
+    and start the service
+    ```bash
+    sudo systemctl start flask-recipe-api.service
+    ```
 3. What `nginx` does is forwards the local port of the flask API to an outward facing URL path. 
-This file is provided in `nginx/flavorpair.me` and belongs in `/etc/nginx/sites-available/` and symlinked to `/etc/nginx/sites-enabled`.  
+    
+    This file is provided in `nginx/flavorpair.me` and belongs in `/etc/nginx/sites-available/` and symlinked to `/etc/nginx/sites-enabled`.  
 `Nginx` is also controlled by systemd.
-Similar to above:
-```bash
-sudo cp nginx/flavorpair.me /etc/ngins/sites-available/
-sudo ln -s  /etc/ngins/sites-available/flavorpair.me /etc/ngins/sites-enabled/flavorpair.me
-sudo systemctl daemon-reload
-sudo systemctl restart nginx
-```
-The site is secured with [Let's Encrypt](https://letsencrypt.org) via `certbot`'s `nginx plugin`.  These days, this is incredibly easy. Without restarting nginx: `sudo certbot --nginx -d flavorpair.me`.
+    Similar to above:
+    ```bash
+    sudo cp nginx/flavorpair.me /etc/ngins/sites-available/
+    sudo ln -s  /etc/ngins/sites-available/flavorpair.me /etc/ngins/sites-enabled/flavorpair.me
+    sudo systemctl daemon-reload
+    sudo systemctl restart nginx
+    ```
+
+    The site is secured with [Let's Encrypt](https://letsencrypt.org) via `certbot`'s `nginx plugin`.  These days, this is incredibly easy. Without restarting nginx: `sudo certbot --nginx -d flavorpair.me`.
 
 ### Hugo and Javascript
 
