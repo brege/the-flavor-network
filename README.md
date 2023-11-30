@@ -6,9 +6,12 @@ a creativity tool that empowers chefs and bartenders to build recipes starting f
 
 ![A network graph showing the interconnectivity of Lemon, Basil, and Vanilla with other ingredients](flavorpair.me/content/lemon-basil-vanilla.png)
 
+This is a graphical search tool that provides an interactive network graph connecting ingredients by flavor, through a concensus of flavor pairing relationships obtained from treating the [The Flavor Bible](https://karenandandrew.com/books/the-flavor-bible/) as a dataset.  Prototype recipe ideas from these connections, and some selected recipes from 
+[food.com](https://food.com) will display to the side.  This way, you can visually cycle through a near endless commbination of ingredients in an intuitive playground.
+
 ## Overview
 
-The website is built with the [Hugo](https://gohugo.io), a static site generator, using the 
+The website is built with [Hugo](https://gohugo.io), a static site generator, using the 
 [papermod theme](https://github.com/adityatelange/hugo-PaperMod/),
 which is served through a [nginx](https://nginx) reverse proxy.
 
