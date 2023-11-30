@@ -1,0 +1,49 @@
+{{ $nodesPath := .Get "nodesPath" }}
+{{ $edgesPath := .Get "edgesPath" }}
+{{ $simPath := .Get "simPath" }}
+
+
+<link rel="stylesheet" href="/css/network.css">
+
+<div id="network-title">
+  <div id="recipe-link"></div>
+</div>
+<div id="network"
+  data-nodes-path={{ $nodesPath }} 
+  data-edges-path={{ $edgesPath }}
+  data-sim-path={{ $simPath }}
+></div>
+<div id="network-settings">
+  <div id="physics-toggle">
+    <label for="physics">
+      dynamics
+    </label>
+    <input type="checkbox" id="physics" checked>
+  </div>
+  <div id="scroll-toggle">
+    <label for="click-to-use">
+      zoom lock
+    </label>
+    <input type="checkbox" id="click-to-use" checked>
+  </div>
+  <div id="lenses-dropdown">
+    <label for="lenses" title="used to see flavor combinations by 'social circle' or 'besties'">
+      lens:
+    </label>
+    <select id="lenses">
+      <option value="similarity" title="'friends list' - see ingredients that have similar overall 'friendships' as my recipe items" selected>
+        similarity
+      </option>
+      <option value="affinity" title="'besties' - see ingredients that are 'best friends' with my recipe items">
+        affinity
+      </option>
+      <option value="hybrid" title="uses a mix of 'friendships' and 'besties' to see flavor combinations">
+        hybrid
+      </option>
+    </select>
+  </div>
+</div>
+
+<script src="https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js"></script>
+<script src="/js/flavor-network.js"></script>
+

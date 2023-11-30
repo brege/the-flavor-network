@@ -1,0 +1,39 @@
+baseURL = 'https://flavorpair.me/'
+languageCode = 'en-us'
+title = 'The Flavor Network'
+description = 'The Flavor Network is a way to build recipes based on flavor pairings.'
+author = 'Wyatt Brege'
+authorEmail = 'wyatt@brege.org'
+authorURL = 'https://brege.org/'
+
+theme = "PaperMod"
+disableKinds = ["taxonomyTerm"]
+
+
+[permalinks]
+  post = "/:year/:month/:day/:slug/"
+[outputs]
+  home = ["HTML"]
+[indexes]
+  category = "categories"
+  tag = "tags"
+  section = "sections"
+  author = "authors"
+[params]
+  customCSS = ["css/two-column.css"]
+
+  avatar = "wyatt@brege.org"
+
+  ShowPostNavLinks = false
+  ShowCodeCopyButtons = true
+  ShowShareButtons = true
+  ShowReadingTime = false
+  ShowWordCount = false
+  ShowBreadCrumbs = false 
+  ShowFullTextinRSS = true
+
+  hideFooter = true
+
+  [params.api]
+    developmentURL = "http://localhost:5000/api/recipe"
+    productionURL = "/api/recipe"

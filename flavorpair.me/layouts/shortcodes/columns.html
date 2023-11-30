@@ -1,0 +1,44 @@
+<!-- layouts/shortcodes/column-layout.html -->
+<style>
+/* Use CSS Grid for responsive columns */
+.responsive-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+    grid-gap: 20px; /* Adjust the spacing between columns */
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    .responsive-columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Media Query for Tablets (e.g., max-width: 1024px) */
+@media (max-width: 1024px) {
+    .responsive-columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Media Query for Desktop */
+@media (min-width: 1025px) {
+    .responsive-columns {
+        grid-template-columns: 1fr 1fr; /* Show columns side by side on desktop */
+    }
+    
+    .main {
+        max-width: 70%; 
+        margin: 0 auto;
+    }
+}
+
+.post-header {
+    display: none;
+}
+</style>
+
+<div class="responsive-columns">
+    {{ .Inner }}
+</div>
+

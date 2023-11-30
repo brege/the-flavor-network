@@ -1,0 +1,159 @@
+/* adapt for phones vs desktops, c.2017+ */
+@media screen and (max-aspect-ratio: 1/1) {
+  #network {
+    height: 50vh;
+  }
+}
+
+@media screen and (min-aspect-ratio: 1/1) {
+  #network {
+    height: 60vh;
+  }
+}
+
+#network {
+  position: relative;
+  border-radius: var(--radius);
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.vis-network {
+  border-radius: var(--radius); 
+  height: 100%;
+  width: 100%;
+}
+.vis-active {
+  box-shadow: 0 0 2px var(--content);
+}
+
+#physics-toggle,
+#scroll-toggle,
+#use-rng-toggle {
+  display: block;
+  font-size: 0.6em;
+  position: relative;
+  padding: 0 var(--radius);
+}
+
+#physics-toggle {
+  display: /*none;*/ block;
+}
+
+/* make the label bold if the option is enabled */
+#physics-toggle.physics-enabled label,
+#scroll-toggle.click-to-use-enabled label,
+#use-rng-toggle.use-rng-enabled label {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--content);
+}
+
+#physics-toggle.physics-disabled label,
+#scroll-toggle.click-to-use-disabled label,
+#use-rng-toggle.use-rng-disabled label {
+  font-weight: 300;
+  color: var(--secondary);
+}
+
+#physics-toggle label:hover,
+#scroll-toggle label:hover,
+#use-rng-toggle label:hover {
+  color: var(--primary);
+}
+
+/* hide the checkboxes */
+#physics-toggle input,
+#scroll-toggle input,
+#use-rng-toggle input {
+  display: none;
+}
+
+#scroll-toggle.click-to-use-enabled label {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--content);
+}
+
+#network-settings {
+  padding: 4px 0px; 
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+#recipe-link,
+#recipe-list {
+  position: relative;
+  font-size: 0.6em;
+  padding: 4px var(--radius);
+}
+
+/* for the lenses dropdown */
+#lenses-dropdown {
+  
+  position: relative;
+  font-size: 0.6em;
+  padding: 0px var(--radius);
+  display: flex;
+  flex-direction: row;
+}
+
+#lenses {
+  position: relative;
+  padding: 1px var(--radius);
+  display: flex;
+  flex-direction: row;
+}
+
+/* style the dropdown */
+#lenses-dropdown select {
+  position: relative;
+  border: 0px solid var(--secondary);
+  border-radius: var(--radius);
+  background-color: var(--entry);
+  color: var(--content);
+  cursor: pointer;
+  outline: none;
+}
+
+/* when hovered, style the dropdown */
+#lenses-dropdown select:hover {
+  background-color: var(--border);
+}
+
+/* style the dropdown options */
+#lenses-dropdown select option {
+  border: 0px solid var(--secondary);
+  border-radius: var(--radius);
+  background-color: var(--code-bg);
+  color: var(--content);
+  cursor: pointer;
+  outline: none;
+}
+
+/* style the dropdown options when hovered */
+#lenses-dropdown select option:hover {
+  background-color: var(--primary);
+  color: var(--content);
+}
+
+
+
+/* style the dropdown arrow */
+#lenses-dropdown select option:after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 0.5em;
+  background: var(--entry);
+  cursor: pointer;
+  pointer-events: none;
+}
+
+

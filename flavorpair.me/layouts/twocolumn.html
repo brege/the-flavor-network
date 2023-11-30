@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Include your CSS file for the two-column layout -->
+  <link rel="stylesheet" href="/css/two-column.css">
+</head>
+<body>
+  <div class="twocolumn">
+    <div class="column-left">
+      {{ .Content | safeHTML }}
+    </div>
+    <div class="column-right">
+      {{ .Params.right | safeHTML }}
+    </div>
+  </div>
+</body>
+</html>
+

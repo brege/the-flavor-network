@@ -1,0 +1,118 @@
+/* static/css/search-bar.css */
+
+/* define the color variables */
+/* https://material.io/design/color/the-color-system.html#tools-for-picking-colors */
+/* this is a poor way to do this, but it works for now */
+:root {
+  --blue-color-1: #BBDEFB;
+  --blue-color-2: #2196F3;
+  --blue-color-3: #64B5F6;
+  --blue-color-4: #2196F3;
+  --blue-color-5: #0D47A1;
+  --blue-color-6: #272935;
+  --blue-color-7: #90CAF9;
+  --blue-color-8: #1976D2;
+}
+
+:root {
+  --green-color-1: #C8E6C9;
+  --green-color-2: #4CAF50;
+  --green-color-3: #81C784;
+  --green-color-4: #4CAF50;
+  --green-color-5: #1B5E20;
+  --green-color-6: #66BB6A;
+  --green-color-7: #A5D6A7;
+  --green-color-8: #E8F5E9;
+}
+
+:root {
+  --grey-color-1: #EEEEEE;
+  --grey-color-2: #9E9E9E;
+  --grey-color-3: #BDBDBD;
+  --grey-color-4: #9E9E9E;
+  --grey-color-5: #212121;
+  --grey-color-6: #323440;
+  --grey-color-7: #444750;
+  --grey-color-8: #f8f8f8;
+}
+
+/* behaviour for the result box bubbles above the search bar */
+.result-box {
+  display: inline-block;
+  border: 1px solid var(--blue-color-2); 
+  padding: 4px 8px;
+  margin: 8px 8px 0px 0px; 
+  background-color: var(--blue-color-1);
+  color: var(--blue-color-4); 
+  border-radius: var(--radius);
+  font-weight: bold;
+}
+
+.result-box:hover {
+  color: var(--blue-color-5); 
+  background-color: var(--blue-color-3); 
+  cursor: pointer;
+}
+
+.dark .result-box {
+  color: var(--blue-color-6);
+  background-color: var(--blue-color-7); 
+}
+
+.dark .result-box:hover {
+  background-color: var(--blue-color-4);
+}
+
+/* search form */
+#search-form {
+  margin: var(--radius) 0px 0px 0px; 
+}
+
+/* behavior for search results container */
+.search-results {
+  margin: 0px 0px 20px 0px; 
+  padding: 0px;
+  width: 100%;
+  color: var(--primary);
+  background-color: var(--code-bg);
+  border-radius: var(--radius);
+  border: 1px solid var(--code-border);
+  overflow-y: auto;
+}
+
+/* behavior for search result items */
+.search-result:hover {
+  background-color: var(--border); 
+}
+
+.search-result.focus {
+  background-color: var(--border); 
+}
+
+/* behavior for search result items */
+.search-result {
+  padding: 8px;
+  margin: 0px;
+  border-bottom: 1px solid var(--code-border);
+  border-radius: 0px;
+}
+
+/* a margin for the search form */
+#search-form {
+  margin: var(--radius) 0px; 
+}
+
+/* behavior for search result items */
+#search-results-container ul {
+  padding-inline-start: 0px;
+  overflow: scroll;
+}
+
+
+.search-result.selected {
+  background-color: var(--border); 
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-weight: bold;
+  padding: var(--radius) calc(var(--radius) * 1.618);
+}

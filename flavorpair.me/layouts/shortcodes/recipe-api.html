@@ -1,0 +1,99 @@
+<!-- recipe-api.html -->
+<div id="result"></div>
+
+<script>
+
+  // Function to trigger the API query
+  function recipeApiTrigger(ingredients) {
+    const xhr = new XMLHttpRequest();
+
+    // API URL with parameters
+    const apiURL = "{{ if .Site.IsServer }}{{ .Site.Params.api.developmentURL }}{{ else }}{{ .Site.Params.api.productionURL }}{{ end }}?ingredient_name=" + ingredients.join(',');
+    console.log("API URL: " + apiURL);
+    
+    xhr.open('GET', apiURL, true);
+
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        const recipes = JSON.parse(xhr.responseText);
+        let htmlContent = '';
+
+        recipes.forEach((recipe) => {
+          htmlContent += '<div class="recipe-card">';
+          htmlContent += `<h3><a href="https://www.food.com/recipe/${recipe.RecipeName}-${recipe.ID}" target="_blank">${recipe.RecipeName.replace(/\b\w/g, l => l.toUpperCase())}</a></h3>`;
+
+          const inputIngredients = ingredients.map((ingredient) => ingredient.trim().toLowerCase());
+
+          recipe.Ingredients.forEach((ingredient, index) => {
+            const formattedIngredient = ingredient.trim().toLowerCase();
+            const isMatch = inputIngredients.some((searchedIngredient) =>
+              formattedIngredient.includes(searchedIngredient)
+            );
+
+            if (isMatch) {
+              htmlContent += `<u><b>${ingredient}</b></u>`;
+            } else {
+              htmlContent += ingredient;
+            }
+
+            // Add a comma if this is not the last ingredient
+            if (index < recipe.Ingredients.length - 1) {
+              htmlContent += ', ';
+            }
+          });
+
+	  const roundedRating = parseFloat(recipe.WeightedRating).toFixed(1);
+          htmlContent += `<div class="rating">Stars: ${roundedRating} </div>`;
+          htmlContent += '</div>';
+        });
+
+        document.getElementById('result').innerHTML = htmlContent;
+      } else {
+        // Handle API error
+        document.getElementById('result').textContent = 'Error: ' + xhr.statusText;
+      }
+    };
+
+    xhr.onerror = function () {
+      // Handle network error
+      document.getElementById('result').textContent = 'Network error occurred.';
+    };
+
+    xhr.send();
+  }
+
+</script>
+
+<style>
+
+.recipe-card {
+  background-color: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--radius);
+  margin-bottom: 15px; 
+  font-size: 1.0rem;
+}
+
+.recipe-card h3 {
+  font-size: 1.2rem; 
+  margin: 8px 0 8px;
+}
+
+.highlight {
+  font-weight: bold;
+  background-color: yellow; 
+}
+
+.rating {
+  font-size: 1.0rem;
+  color: var(--text-muted);
+  font-weight: bold;
+  justify-content: flex-end;
+  align-items: flex-end;
+  display: flex;
+}
+
+
+</style>
+

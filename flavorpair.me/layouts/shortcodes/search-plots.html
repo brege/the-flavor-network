@@ -1,0 +1,12 @@
+{{ $jsonPath := .Get "jsonPath" }}
+
+<link rel="stylesheet" href="/css/search-bar.css">
+<div id="searchbox">
+  <div id="search-form" data-search-path={{ $jsonPath }}>
+    <input id="search-input" autofocus placeholder="Search.." aria-label="search" type="search" autocomplete="off">
+  </div>
+  <div id="search-results-container" aria-label="search results"></div>
+</div>
+<script src="/js/search-plots.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.6/fuse.min.js" ></script>
+

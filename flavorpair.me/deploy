@@ -1,0 +1,30 @@
+#!/bin/bash
+HOST=brege.org
+DIR=/usr/share/nginx/flavorpair.me
+
+# Check for a valid Hugo and webpack installation
+if ! which hugo > /dev/null; then
+  echo "[hugo] Error: Hugo not found"
+  exit 1
+fi
+
+# Clean the build directory, if it exists
+if [ -d "public" ]; then
+  hugo --cleanDestinationDir
+fi
+
+# Build hugo site
+echo "[hugo] Building site..."
+hugo --buildDrafts=false 2>&1 | awk '{print "[hugo]", $0}'
+
+# Check if the hugo build was successful
+if [ $? -ne 0 ]; then
+  echo "[hugo] Error: Hugo build failed"
+  exit 1
+fi
+
+# Deploy to $HOST
+echo "[rsync] Deploying site to ${HOST}:${DIR}..."
+rsync -avz --delete --exclude=".well-known" public/ ${HOST}:${DIR} 2>&1 | awk '{print "[rsync]", $0}'
+
+exit 0
