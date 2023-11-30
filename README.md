@@ -52,7 +52,7 @@ In order to use the recipe API, you'll need to initialize the SQL database.
 ``` bash
 python backend.py
 ```
-which is what one does locally.  On the production machine https://flavorpair.me, however, the `systemd` service file used is provided in `system/flask-recipe-api.service` which adds an additional WSGI layer.
+  which is what one does locally.  On the production machine https://flavorpair.me, however, the `systemd` service file used is provided in `system/flask-recipe-api.service` which adds an additional WSGI layer.
 
 ## Production Server
 
@@ -63,11 +63,11 @@ his will build the site files locally via `hugo`, clean the site directory on th
 ```bash
 sudo systemctl enable flask-recipe-api.service
 ```
-Reload the daemon
+  Reload the daemon
 ```bash
 sudo systemctl daemon-reload
 ```
-and start the service
+  and start the service
 ```bash
 sudo systemctl start flask-recipe-api.service
 ```
