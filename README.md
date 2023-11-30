@@ -49,7 +49,7 @@ In order to use the recipe API, you'll need to initialize the SQL database.
 ``` bash
 python backend.py
 ```
-which is what one does locally.  On the production machine https://flavorpair.me, however, the `systemd` service file used is provided in `db/flask-recipe-api.service` which adds an additional WSGI layer.
+which is what one does locally.  On the production machine https://flavorpair.me, however, the `systemd` service file used is provided in `system/flask-recipe-api.service` which adds an additional WSGI layer.
 
 ## Production Server
 
@@ -68,13 +68,24 @@ and start the service
 ```bash
 sudo systemctl start flask-recipe-api.service
 ```
+3. What `nginx` does is forwards the local port of the flask API to an outward facing URL path. 
+This file is provided in `nginx/flavorpair.me` and belongs in `/etc/nginx/sites-available/` and symlinked to `/etc/nginx/sites-enabled`.  
+`Nginx` is also controlled by systemd.
+Similar to above:
+```bash
+sudo cp nginx/flavorpair.me /etc/ngins/sites-available/
+sudo ln -s  /etc/ngins/sites-available/flavorpair.me /etc/ngins/sites-enabled/flavorpair.me
+sudo systemctl daemon-reload
+sudo systemctl restart nginx
+```
+The site is secured with [Let's Encrypt](https://letsencrypt.org) via `certbot`'s `nginx plugin`.  These days, this is incredibly easy. Without restarting nginx: `sudo certbot --nginx -d flavorpair.me`.
 
 ### Hugo and Javascript
 
 The way you develop javascript on top of a hugo site is usually done through shortcodes and partials. 
 One word of caution here is that there is inherently two different variable declarations happening in such javascript, as often times you need to have hugo translate a local path to a relative URL or vice versa. 
 One handy trick is to pass paths through HTML tag attributes within shortcodes.
-The syntax can be confusing even to experienced hugo users.
+The syntax can admittedly be confusing even to experienced hugo users.
 
 
 

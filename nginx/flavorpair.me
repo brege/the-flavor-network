@@ -1,0 +1,32 @@
+server {
+    listen 80;
+    server_name flavorpair.me www.flavorpair.me;
+
+    # Redirect HTTP to HTTPS
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name flavorpair.me www.flavorpair.me;
+
+    ssl_certificate /etc/letsencrypt/live/flavorpair.me/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/flavorpair.me/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    root /usr/share/nginx/flavorpair.me;
+    index index.html index.htm index.nginx-debian.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location /api/recipe {
+        include uwsgi_params;
+        uwsgi_pass 127.0.0.1:5000;  # Adjust this to your uWSGI address and port
+    }
+
+}
+
+# Path: /etc/nginx/sites-available/flavorpair.me
