@@ -4,7 +4,7 @@ This repository contains the website source code for
 [flavorpair.me](https://flavorpair.me),
 a creativity tool that empowers chefs and bartenders to build recipes starting from flavor pairing fundamentals.
 
-![A network grpah showing the interconnectivity of Lemon, Basil, and Vanilla with other ingredients](flavorpair.me/content/lemon-basil-vanilla.png)
+![A network graph showing the interconnectivity of Lemon, Basil, and Vanilla with other ingredients](flavorpair.me/content/lemon-basil-vanilla.png)
 
 ## Overview
 
