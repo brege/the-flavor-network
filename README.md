@@ -4,7 +4,7 @@ This repository contains the website source code for
 [flavorpair.me](https://flavorpair.me),
 a creativity tool that empowers chefs and bartenders to build recipes starting from flavor pairing fundamentals.
 
-![A network graph showing the interconnectivity of Lemon, Basil, and Vanilla with other ingredients](flavorpair.me/content/lemon-basil-vanilla.png)
+![A network graph showing the interconnectivity of Lemon, Basil, and Vanilla with other ingredients](site/content/lemon-basil-vanilla.png)
 
 This is a graphical search tool that provides an interactive network graph connecting ingredients by flavor, through a concensus of flavor pairing relationships obtained from treating the [The Flavor Bible](https://karenandandrew.com/books/the-flavor-bible/) as a dataset.  Prototype recipe ideas from these connections, and some selected recipes from 
 [food.com](https://food.com) will display to the side.  This way, you can visually cycle through a near endless commbination of ingredients in an intuitive playground.
@@ -25,13 +25,13 @@ The code to generate this dataset can be found in a companion repository [here](
 
 The third module is a custom recipe searcher. This uses a dataset constructed from over 200,000 recipes on [food.com](https://food.com) (fmr. genius kitchen), which can be found [on kaggle](https://www.kaggle.com/datasets/shuyangli94/food-com-recipes-and-user-interactions).
 
-That dataset was turned into a SQLite database (see: [db/csv_to_sql.ipynb](db/csv_to_sql.ipynb)), where a custom WSGI API was built over Flask.
+That dataset was turned into a SQLite database (see: [notebooks/csv-to-sql.ipynb](notebooks/csv-to-sql.ipynb)), where a custom WSGI API was built over Flask.
 Recipes are dynamiccally updated as new ingredients are added or removed from the "proto" recipe ingredient list.
 In short, all three modules (ingredient search, network visualization, recipe databse) are kept in sync with the user's input.
 
 ## Developement Server
 
-Hugo has a built in developement server.  In `flavorpair.me/`, run 
+Hugo has a built in developement server.  In `site/`, run
 ```bash
 hugo server
 ``` 
@@ -42,26 +42,26 @@ You will need two terminal windows open.  One for the hugo server, and one for t
 
 In order to use the recipe API, you'll need to initialize the SQL database.
 
-1. Download [the kaggle dataset](https://www.kaggle.com/datasets/shuyangli94/food-com-recipes-and-user-interactions) and unpack it into `./db/data/`
+1. Download [the kaggle dataset](https://www.kaggle.com/datasets/shuyangli94/food-com-recipes-and-user-interactions) and unpack it into `./notebooks/data/`
 
-2. Run a jupyter notebook server, `jupyter notebook` in `db/`, then load `csv_to_sql.ipynb` and begin running executing the cells.  This can take some time.
+2. Run a jupyter notebook server, `jupyter notebook` in `notebooks/`, then load `csv-to-sql.ipynb` and begin running executing the cells.  This can take some time.
 
-3. This will create a `food_dotcom.db` file.  On my production machine, I keep this database file in the same directory as `backend.py`: `/var/www/flask_recipe_api/food_dotcom.db`
+3. This will create a `food_dotcom.db` file.  On my production machine, I keep this database file in the same directory as `backend.py`: `/var/www/recipe-api/food_dotcom.db`
 
 4. The API can be started with
     ``` bash
     python backend.py
     ```
-    which is what one does locally.  On the production machine https://flavorpair.me, however, the `systemd` service file used is provided in `system/flask-recipe-api.service` which adds an additional WSGI layer.
+    which is what one does locally.  On the production machine https://flavorpair.me, however, the `systemd` service file used is provided in `deploy/systemd/recipe-api.service` which adds an additional WSGI layer.
 
 ## Production Server
 
-1. Much of the deployment of the site is encapsulated in the `./deploy` shell script, in the `flavorpair.me` source directory. 
+1. Much of the deployment of the site is encapsulated in the `site/deploy` shell script. 
 This will build the site files locally via `hugo`, clean the site directory on the remote server, and then transfer the static site files to the remote server. 
 
 2. The remote, as mentioned, also makes use of a `systemd` service file that controls the WSGI/Flask server API.  This is a separate process from hugo.  This only needs to be enabled once (located in `/etc/systemd/system/`):
     ```bash
-    sudo systemctl enable flask-recipe-api.service
+    sudo systemctl enable recipe-api.service
     ```
     Reload the daemon
     ```bash
@@ -69,15 +69,15 @@ This will build the site files locally via `hugo`, clean the site directory on t
     ```
     and start the service
     ```bash
-    sudo systemctl start flask-recipe-api.service
+    sudo systemctl start recipe-api.service
     ```
 3. What `nginx` does is forwards the local port of the flask API to an outward facing URL path. 
     
-    This file is provided in `nginx/flavorpair.me` and belongs in `/etc/nginx/sites-available/` and symlinked to `/etc/nginx/sites-enabled`.  
+    This file is provided in `deploy/nginx/flavorpair.me` and belongs in `/etc/nginx/sites-available/` and symlinked to `/etc/nginx/sites-enabled`.  
 `Nginx` is also controlled by systemd.
     Similar to above:
     ```bash
-    sudo cp nginx/flavorpair.me /etc/ngins/sites-available/
+    sudo cp deploy/nginx/flavorpair.me /etc/ngins/sites-available/
     sudo ln -s  /etc/ngins/sites-available/flavorpair.me /etc/ngins/sites-enabled/flavorpair.me
     sudo systemctl daemon-reload
     sudo systemctl restart nginx

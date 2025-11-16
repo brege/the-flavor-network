@@ -5,9 +5,6 @@ resources/
 *.swp
 go.???
 
-.editorconfig
-.github/
 .hugo_build.lock
 
-node_modules/ 
-
+.ipynb_checkpoints/
