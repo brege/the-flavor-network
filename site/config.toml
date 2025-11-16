@@ -9,6 +9,14 @@ authorURL = 'https://brege.org/'
 theme = "PaperMod"
 disableKinds = ["taxonomy"]
 
+[module]
+  [[module.mounts]]
+    source = "static/icons"
+    target = "static"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+
 
 [permalinks]
   post = "/:year/:month/:day/:slug/"
@@ -32,6 +40,13 @@ disableKinds = ["taxonomy"]
   ShowFullTextinRSS = true
 
   hideFooter = true
+  
+  [params.assets]
+    favicon = "/favicon.svg"
+    favicon16x16 = "/favicon-16x16.png"
+    favicon32x32 = "/favicon-32x32.png"
+    apple_touch_icon = "/apple-touch-icon.png"
+    safari_pinned_tab = "/safari-pinned-tab.svg"
 
   [params.api]
     developmentURL = "http://localhost:5000/api/recipe"
