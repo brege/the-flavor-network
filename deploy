@@ -1,0 +1,47 @@
+#!/bin/bash
+set -e
+
+HOST=brege.org
+SITE_DIR=/usr/share/nginx/flavorpair.me
+STAGING_DIR=/opt/flavorpair
+
+cd "$(dirname "$0")"
+
+# Check for Hugo
+if ! which hugo > /dev/null; then
+  echo "[error] Hugo not found"
+  exit 1
+fi
+
+# Build Hugo site
+echo "[hugo] Building site..."
+cd site
+if [ -d "public" ]; then
+  hugo --cleanDestinationDir
+fi
+hugo --buildDrafts=false 2>&1 | awk '{print "[hugo]", $0}'
+
+if [ $? -ne 0 ]; then
+  echo "[hugo] Build failed"
+  exit 1
+fi
+
+# Deploy static site
+echo "[rsync] Deploying site to ${HOST}:${SITE_DIR}..."
+rsync -avz --delete --exclude=".well-known" public/ ${HOST}:${SITE_DIR} 2>&1 | awk '{print "[rsync]", $0}'
+
+cd ..
+
+# Stage deployment files
+echo "[stage] Staging deployment files to ${HOST}:${STAGING_DIR}..."
+ssh ${HOST} "mkdir -p ${STAGING_DIR}"
+rsync -avz server/ ${HOST}:${STAGING_DIR}/ 2>&1 | awk '{print "[stage]", $0}'
+
+echo ""
+echo "Deployment complete!"
+echo "Static site deployed to: ${SITE_DIR}"
+echo "Deployment files staged to: ${STAGING_DIR}"
+echo ""
+echo "To install API/nginx/systemd changes, ssh to ${HOST} and run install commands."
+
+exit 0
