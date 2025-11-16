@@ -7,20 +7,19 @@ authorEmail = 'wyatt@brege.org'
 authorURL = 'https://brege.org/'
 
 theme = "PaperMod"
-disableKinds = ["taxonomyTerm"]
+disableKinds = ["taxonomy"]
 
 
 [permalinks]
   post = "/:year/:month/:day/:slug/"
 [outputs]
   home = ["HTML"]
-[indexes]
+[taxonomies]
   category = "categories"
   tag = "tags"
   section = "sections"
   author = "authors"
 [params]
-  customCSS = ["css/two-column.css"]
 
   avatar = "wyatt@brege.org"
 

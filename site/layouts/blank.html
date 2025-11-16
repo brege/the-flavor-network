@@ -1,22 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>{{ .Title }}</title>
-</head>
-<body>
-  <div class="grid-container">
-    <div class="title-cell">{{ .Title }}</div>
-    <div class="column1">
-    </div>
-
-    <div class="column2">
-    </div>
-    <div class="bottom-cell">
-      {{ .Content }}
-    </div>
-  </div>
-</body>
-</html>
-
-
-
+{{- define "main" -}}
+<div class="post-content">
+{{ .Content }}
+</div>
+{{- end -}}

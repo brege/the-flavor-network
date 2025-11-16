@@ -8,7 +8,7 @@
     const xhr = new XMLHttpRequest();
 
     // API URL with parameters
-    const apiURL = "{{ if .Site.IsServer }}{{ .Site.Params.api.developmentURL }}{{ else }}{{ .Site.Params.api.productionURL }}{{ end }}?ingredient_name=" + ingredients.join(',');
+    const apiURL = "{{ if hugo.IsServer }}{{ .Site.Params.api.developmentURL }}{{ else }}{{ .Site.Params.api.productionURL }}{{ end }}?ingredient_name=" + ingredients.join(',');
     console.log("API URL: " + apiURL);
     
     xhr.open('GET', apiURL, true);
