@@ -1,10 +1,9 @@
-themes/*
+# hugo artifacts
+themes/
 public/
 assets/
 resources/
-*.swp
-go.???
-
 .hugo_build.lock
 
+# jupyter artifacts
 .ipynb_checkpoints/
