@@ -1,20 +1,8 @@
-/* adapt for phones vs desktops, c.2017+ */
-@media screen and (max-aspect-ratio: 1/1) {
-  #network {
-    height: 50vh;
-  }
-}
-
-@media screen and (min-aspect-ratio: 1/1) {
-  #network {
-    height: 60vh;
-  }
-}
-
 #network {
   position: relative;
+  width: 100%;
+  height: clamp(400px, 55vh, 700px);
   border-radius: var(--radius);
-  float: left;
   display: flex;
   flex-direction: column;
   justify-content: center;
