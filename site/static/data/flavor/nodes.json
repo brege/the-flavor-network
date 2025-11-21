@@ -121,13 +121,8 @@
   },
   {
     "id": "apricots",
-    "influence": 62,
+    "influence": 155,
     "label": "apricots"
-  },
-  {
-    "id": "apricots ",
-    "influence": 93,
-    "label": "apricots "
   },
   {
     "id": "apricots, dried",
@@ -306,13 +301,8 @@
   },
   {
     "id": "beans",
-    "influence": 33,
+    "influence": 47,
     "label": "beans"
-  },
-  {
-    "id": "beans ",
-    "influence": 14,
-    "label": "beans "
   },
   {
     "id": "beans, black",
@@ -371,13 +361,8 @@
   },
   {
     "id": "beef",
-    "influence": 111,
+    "influence": 192,
     "label": "beef"
-  },
-  {
-    "id": "beef ",
-    "influence": 81,
-    "label": "beef "
   },
   {
     "id": "beef  braised",
@@ -531,13 +516,8 @@
   },
   {
     "id": "berries",
-    "influence": 33,
+    "influence": 59,
     "label": "berries"
-  },
-  {
-    "id": "berries ",
-    "influence": 26,
-    "label": "berries "
   },
   {
     "id": "berry liqueurs",
@@ -831,13 +811,8 @@
   },
   {
     "id": "cabbage",
-    "influence": 37,
+    "influence": 135,
     "label": "cabbage"
-  },
-  {
-    "id": "cabbage ",
-    "influence": 98,
-    "label": "cabbage "
   },
   {
     "id": "cabbage, green",
@@ -1116,13 +1091,8 @@
   },
   {
     "id": "cheese",
-    "influence": 30,
+    "influence": 39,
     "label": "cheese"
-  },
-  {
-    "id": "cheese ",
-    "influence": 9,
-    "label": "cheese "
   },
   {
     "id": "cheese, asiago",
@@ -1170,9 +1140,9 @@
     "label": "cheese, comt\u00e9"
   },
   {
-    "id": "cheese, cow\u2019s milk ",
+    "id": "cheese, cow\u2019s milk",
     "influence": 8,
-    "label": "cheese, cow\u2019s milk "
+    "label": "cheese, cow\u2019s milk"
   },
   {
     "id": "cheese, emmental",
@@ -1205,9 +1175,9 @@
     "label": "cheese, goat \u2014 fresh"
   },
   {
-    "id": "cheese, goat\u2019s milk ",
+    "id": "cheese, goat\u2019s milk",
     "influence": 11,
-    "label": "cheese, goat\u2019s milk "
+    "label": "cheese, goat\u2019s milk"
   },
   {
     "id": "cheese, gorgonzola",
@@ -1290,9 +1260,9 @@
     "label": "cheese, roquefort"
   },
   {
-    "id": "cheese, sheep\u2019s milk ",
+    "id": "cheese, sheep\u2019s milk",
     "influence": 12,
-    "label": "cheese, sheep\u2019s milk "
+    "label": "cheese, sheep\u2019s milk"
   },
   {
     "id": "cheese, stilton",
@@ -1341,13 +1311,8 @@
   },
   {
     "id": "cherries",
-    "influence": 45,
+    "influence": 141,
     "label": "cherries"
-  },
-  {
-    "id": "cherries ",
-    "influence": 96,
-    "label": "cherries "
   },
   {
     "id": "cherries, dried",
@@ -1431,13 +1396,8 @@
   },
   {
     "id": "chile peppers",
-    "influence": 154,
+    "influence": 217,
     "label": "chile peppers"
-  },
-  {
-    "id": "chile peppers ",
-    "influence": 63,
-    "label": "chile peppers "
   },
   {
     "id": "chile peppers  chipotle",
@@ -1625,9 +1585,9 @@
     "label": "chocolate"
   },
   {
-    "id": "chocolate / cocoa ",
+    "id": "chocolate / cocoa",
     "influence": 98,
-    "label": "chocolate / cocoa "
+    "label": "chocolate / cocoa"
   },
   {
     "id": "chocolate, dark",
@@ -1716,13 +1676,8 @@
   },
   {
     "id": "citrus",
-    "influence": 22,
+    "influence": 29,
     "label": "citrus"
-  },
-  {
-    "id": "citrus ",
-    "influence": 7,
-    "label": "citrus "
   },
   {
     "id": "citrus fruit",
@@ -2275,9 +2230,9 @@
     "label": "eggs and egg dishes"
   },
   {
-    "id": "eggs and egg- based dishes ",
+    "id": "eggs and egg- based dishes",
     "influence": 43,
-    "label": "eggs and egg- based dishes "
+    "label": "eggs and egg- based dishes"
   },
   {
     "id": "eggs, esp. hard-boiled",
@@ -2451,13 +2406,8 @@
   },
   {
     "id": "fish",
-    "influence": 135,
+    "influence": 159,
     "label": "fish"
-  },
-  {
-    "id": "fish ",
-    "influence": 24,
-    "label": "fish "
   },
   {
     "id": "fish sauce",
@@ -2541,13 +2491,8 @@
   },
   {
     "id": "french cuisine",
-    "influence": 54,
+    "influence": 76,
     "label": "french cuisine"
-  },
-  {
-    "id": "french cuisine ",
-    "influence": 22,
-    "label": "french cuisine "
   },
   {
     "id": "french cuisine, esp. proven\u00e7al",
@@ -2666,13 +2611,8 @@
   },
   {
     "id": "game",
-    "influence": 40,
+    "influence": 72,
     "label": "game"
-  },
-  {
-    "id": "game ",
-    "influence": 32,
-    "label": "game "
   },
   {
     "id": "game birds",
@@ -2866,13 +2806,8 @@
   },
   {
     "id": "greens",
-    "influence": 53,
+    "influence": 114,
     "label": "greens"
-  },
-  {
-    "id": "greens ",
-    "influence": 61,
-    "label": "greens "
   },
   {
     "id": "greens  bitter",
@@ -3181,13 +3116,8 @@
   },
   {
     "id": "italian cuisine",
-    "influence": 64,
+    "influence": 107,
     "label": "italian cuisine"
-  },
-  {
-    "id": "italian cuisine ",
-    "influence": 43,
-    "label": "italian cuisine "
   },
   {
     "id": "italian cuisine, esp. southern",
@@ -3296,13 +3226,8 @@
   },
   {
     "id": "lamb",
-    "influence": 104,
+    "influence": 257,
     "label": "lamb"
-  },
-  {
-    "id": "lamb ",
-    "influence": 153,
-    "label": "lamb "
   },
   {
     "id": "lamb  grilled",
@@ -3446,13 +3371,8 @@
   },
   {
     "id": "lettuces",
-    "influence": 11,
+    "influence": 51,
     "label": "lettuces"
-  },
-  {
-    "id": "lettuces ",
-    "influence": 40,
-    "label": "lettuces "
   },
   {
     "id": "lettuces \u2014 bitter greens and chicories",
@@ -3740,9 +3660,9 @@
     "label": "melon, esp. honeydew"
   },
   {
-    "id": "melon/ muskmelons ",
+    "id": "melon/ muskmelons",
     "influence": 67,
-    "label": "melon/ muskmelons "
+    "label": "melon/ muskmelons"
   },
   {
     "id": "melons",
@@ -3796,13 +3716,8 @@
   },
   {
     "id": "mint",
-    "influence": 153,
+    "influence": 287,
     "label": "mint"
-  },
-  {
-    "id": "mint ",
-    "influence": 134,
-    "label": "mint "
   },
   {
     "id": "mint  spearmint",
@@ -3936,13 +3851,8 @@
   },
   {
     "id": "mushrooms",
-    "influence": 99,
+    "influence": 221,
     "label": "mushrooms"
-  },
-  {
-    "id": "mushrooms ",
-    "influence": 122,
-    "label": "mushrooms "
   },
   {
     "id": "mushrooms \u2014 chanterelles",
@@ -4296,13 +4206,8 @@
   },
   {
     "id": "onions",
-    "influence": 154,
+    "influence": 272,
     "label": "onions"
-  },
-  {
-    "id": "onions ",
-    "influence": 118,
-    "label": "onions "
   },
   {
     "id": "onions, esp. green",
@@ -4406,13 +4311,8 @@
   },
   {
     "id": "oranges",
-    "influence": 9,
+    "influence": 152,
     "label": "oranges"
-  },
-  {
-    "id": "oranges ",
-    "influence": 143,
-    "label": "oranges "
   },
   {
     "id": "oranges, blood",
@@ -4481,13 +4381,8 @@
   },
   {
     "id": "paprika",
-    "influence": 103,
+    "influence": 172,
     "label": "paprika"
-  },
-  {
-    "id": "paprika ",
-    "influence": 69,
-    "label": "paprika "
   },
   {
     "id": "paprika  smoked",
@@ -4606,13 +4501,8 @@
   },
   {
     "id": "peas",
-    "influence": 52,
+    "influence": 149,
     "label": "peas"
-  },
-  {
-    "id": "peas ",
-    "influence": 97,
-    "label": "peas "
   },
   {
     "id": "pecans",
@@ -4841,13 +4731,8 @@
   },
   {
     "id": "pork",
-    "influence": 156,
+    "influence": 325,
     "label": "pork"
-  },
-  {
-    "id": "pork ",
-    "influence": 169,
-    "label": "pork "
   },
   {
     "id": "pork  loin",
@@ -5190,9 +5075,9 @@
     "label": "rice, basmati"
   },
   {
-    "id": "rice, white ",
+    "id": "rice, white",
     "influence": 35,
-    "label": "rice, white "
+    "label": "rice, white"
   },
   {
     "id": "rice, wild",
@@ -5611,13 +5496,8 @@
   },
   {
     "id": "seafood",
-    "influence": 55,
+    "influence": 83,
     "label": "seafood"
-  },
-  {
-    "id": "seafood ",
-    "influence": 28,
-    "label": "seafood "
   },
   {
     "id": "seaweed",
@@ -6466,13 +6346,8 @@
   },
   {
     "id": "veal",
-    "influence": 51,
+    "influence": 159,
     "label": "veal"
-  },
-  {
-    "id": "veal ",
-    "influence": 108,
-    "label": "veal "
   },
   {
     "id": "veal stock",
