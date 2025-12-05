@@ -14,4 +14,3 @@ SyslogIdentifier=flask-recipe-api
 
 [Install]
 WantedBy=multi-user.target
-~                                 

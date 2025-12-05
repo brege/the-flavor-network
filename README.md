@@ -26,8 +26,8 @@ The code to generate this dataset can be found in a companion repository [here](
 The third module is a custom recipe searcher. This uses a dataset constructed from over 200,000 recipes on [food.com](https://food.com) (fmr. genius kitchen), which can be found [on kaggle](https://www.kaggle.com/datasets/shuyangli94/food-com-recipes-and-user-interactions).
 
 That dataset was turned into a SQLite database (see: [notebooks/csv-to-sql.ipynb](notebooks/csv-to-sql.ipynb)), where a custom WSGI API was built over Flask.
-Recipes are dynamiccally updated as new ingredients are added or removed from the "proto" recipe ingredient list.
-In short, all three modules (ingredient search, network visualization, recipe databse) are kept in sync with the user's input.
+Recipes are dynamically updated as new ingredients are added or removed from the "proto" recipe ingredient list.
+In short, all three modules (ingredient search, network visualization, recipe database) are kept in sync with the user's input.
 
 ## Developement Server
 
@@ -52,11 +52,11 @@ In order to use the recipe API, you'll need to initialize the SQL database.
     ``` bash
     python backend.py
     ```
-    which is what one does locally.  On the production machine https://flavorpair.me, however, the `systemd` service file used is provided in `deploy/systemd/recipe-api.service` which adds an additional WSGI layer.
+    which is what one does locally.  On the production machine https://flavorpair.me, however, the `systemd` service file used is provided in `server/systemd/recipe-api.service` which adds an additional WSGI layer.
 
 ## Production Server
 
-1. Much of the deployment of the site is encapsulated in the `site/deploy` shell script. 
+1. Much of the deployment of the site is encapsulated in the `deploy` shell script. 
 This will build the site files locally via `hugo`, clean the site directory on the remote server, and then transfer the static site files to the remote server. 
 
 2. The remote, as mentioned, also makes use of a `systemd` service file that controls the WSGI/Flask server API.  This is a separate process from hugo.  This only needs to be enabled once (located in `/etc/systemd/system/`):
@@ -73,11 +73,11 @@ This will build the site files locally via `hugo`, clean the site directory on t
     ```
 3. What `nginx` does is forwards the local port of the flask API to an outward facing URL path. 
     
-    This file is provided in `deploy/nginx/flavorpair.me` and belongs in `/etc/nginx/sites-available/` and symlinked to `/etc/nginx/sites-enabled`.  
+    This file is provided in `server/nginx/flavorpair.me` and belongs in `/etc/nginx/sites-available/` and symlinked to `/etc/nginx/sites-enabled`.
 `Nginx` is also controlled by systemd.
     Similar to above:
     ```bash
-    sudo cp deploy/nginx/flavorpair.me /etc/ngins/sites-available/
+    sudo cp server/nginx/flavorpair.me /etc/ngins/sites-available/
     sudo ln -s  /etc/ngins/sites-available/flavorpair.me /etc/ngins/sites-enabled/flavorpair.me
     sudo systemctl daemon-reload
     sudo systemctl restart nginx
