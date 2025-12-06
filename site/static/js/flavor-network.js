@@ -178,22 +178,20 @@ getNodesAndEdges().then(function (data) {
   // get the similarities from the server
   getSimilarities().then(function (data) {
     similarities = data;
+    // Initialize with default ingredients
+    handleResultClick('basil');
+    handleResultClick('vanilla');
+    handleResultClick('lemon');
   });
 });
 
 /* update the click-to-use option
-   (weird naming, but it solves the scroll wheel/finger 
+   (weird naming, but it solves the scroll wheel/finger
     grabbing the graph and zooming, instead of scrolling/
     gesture-ing down the page) */
 updateOptionAppearance('click-to-use', 'click-to-use', options.clickToUse);
 
-// DEMO: Add a single dummy node to the network graph
-network.setData({ nodes: [{ id: 'basil', label: 'try \'basil\'..' }], edges: [] });
-network.setOptions({ nodes: { shape: 'text' } });
-network.setOptions({ nodes: { font: { size: 34 } } });
-network.setOptions({ nodes: { font: { color: '#6c757d' } } });
-
-// When the user selects a result, update the network graph 
+// When the user selects a result, update the network graph
 document.addEventListener('selectedResultsChanged', function (e) {
   const selectedResults = e.detail;
   filterNodesAndEdges(selectedResults);
