@@ -1,4 +1,4 @@
-# The Flavor Network
+# <div align=center> The Flavor Network | [Demo](https://flavorpair.me) </div>
 
 This repository contains the website source code for 
 [flavorpair.me](https://flavorpair.me),
