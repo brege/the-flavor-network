@@ -7,3 +7,8 @@ resources/
 
 # jupyter artifacts
 .ipynb_checkpoints/
+
+# generated deployment files
+server/systemd/recipe-api.service
+server/api/config.ini
+server/config.ini

@@ -1,11 +1,16 @@
 #!/bin/bash
 set -e
 
-HOST=brege.org
-SITE_DIR=/usr/share/nginx/flavorpair.me
-STAGING_DIR=/opt/flavorpair
-
 cd "$(dirname "$0")"
+
+# Load configuration
+if [ ! -f "server/config.ini" ]; then
+  echo "[error] server/config.ini not found"
+  exit 1
+fi
+
+# Extract [deploy] section variables (stop at next section)
+eval "$(sed -n '/^\[deploy\]/,/^\[/p' server/config.ini | grep -v '^\[' | grep '=' | sed 's/ *= */=/')"
 
 # Check for Hugo
 if ! which hugo > /dev/null; then
@@ -32,16 +37,27 @@ rsync -avz --delete --exclude=".well-known" public/ ${HOST}:${SITE_DIR} 2>&1 | a
 
 cd ..
 
-# Stage deployment files
-echo "[stage] Staging deployment files to ${HOST}:${STAGING_DIR}..."
+# Generate server config files from templates
+echo "[build] Generating systemd service..."
+sed "s|__user__|${API_USER}|g; s|__dir__|${STAGING_DIR}|g; s|__port__|${API_PORT}|g" \
+  server/systemd/recipe-api.template.service > server/systemd/recipe-api.service
+
+echo "[build] Generating uwsgi config..."
+echo "[uwsgi]" > server/api/config.ini
+sed -n '/^\[uwsgi\]/,/^\[/p' server/config.ini | grep -v '^\[' | sed "s|__dir__|${STAGING_DIR}|g" >> server/api/config.ini
+
+# Deploy server files
+echo "[rsync] Deploying server to ${HOST}:${STAGING_DIR}..."
 ssh ${HOST} "mkdir -p ${STAGING_DIR}"
-rsync -avz server/ ${HOST}:${STAGING_DIR}/ 2>&1 | awk '{print "[stage]", $0}'
+rsync -avz server/ ${HOST}:${STAGING_DIR}/ 2>&1 | awk '{print "[rsync]", $0}'
+
+# Run remote installer
+echo "[install] Running remote installer on ${HOST}..."
+ssh -t ${HOST} "cd ${STAGING_DIR} && ./install"
 
 echo ""
 echo "Deployment complete!"
 echo "Static site deployed to: ${SITE_DIR}"
-echo "Deployment files staged to: ${STAGING_DIR}"
-echo ""
-echo "To install API/nginx/systemd changes, ssh to ${HOST} and run install commands."
+echo "API deployed to: ${STAGING_DIR}"
 
 exit 0

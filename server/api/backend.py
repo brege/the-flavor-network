@@ -58,7 +58,7 @@ def get_recipes_by_ingredients_route():
     top_n = int(request.args.get('top_n', 5))
 
     # Call the function to get the recipes by ingredients
-    recipes = get_recipes_by_ingredients('food_dotcom.db', ingredient_names, top_n)
+    recipes = get_recipes_by_ingredients('/var/database/food_dotcom.db', ingredient_names, top_n)
     recipes_json = jsonify(recipes[:top_n])
 
     return recipes_json

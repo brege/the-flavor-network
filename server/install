@@ -1,0 +1,37 @@
+#!/bin/bash
+set -e
+
+DIR=$(cd "$(dirname "$0")" && pwd)
+PYTHON=python3.13
+
+echo "[setup] Installing Python venv..."
+${PYTHON} -m venv "${DIR}/.venv"
+
+echo "[setup] Installing dependencies..."
+"${DIR}/.venv/bin/pip" install --quiet Flask flask-cors uwsgi
+
+echo "[setup] Creating run directory..."
+mkdir -p "${DIR}/run"
+
+echo "[setup] Installing systemd service..."
+sudo cp "${DIR}/systemd/recipe-api.service" /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable recipe-api.service
+
+echo "[setup] Installing nginx config..."
+sudo cp "${DIR}/nginx/flavorpair.me" /etc/nginx/sites-available/flavorpair.me
+
+echo "[setup] Starting recipe-api service..."
+sudo systemctl restart recipe-api.service
+
+echo "[setup] Reloading nginx..."
+sudo systemctl reload nginx
+
+echo
+echo "Socket status:"
+ls -la "${DIR}/run/recipe-api.sock"
+echo
+echo "Installation complete!"
+echo
+
+exit 0

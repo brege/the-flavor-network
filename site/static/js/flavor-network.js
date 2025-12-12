@@ -182,6 +182,10 @@ getNodesAndEdges().then(function (data) {
     handleResultClick('basil');
     handleResultClick('vanilla');
     handleResultClick('lemon');
+    // Trigger recipe API with default ingredients
+    if (typeof recipeApiTrigger === 'function') {
+      setTimeout(() => recipeApiTrigger(['basil', 'vanilla', 'lemon']), 100);
+    }
   });
 });
 
